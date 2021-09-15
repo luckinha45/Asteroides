@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public GameObject prefabCirculo;
-    public float speed = 10.0f;
+    public GameObject tirosPoll;
+    private float acceleration = 5.0f;
     public float angle = 0.0f;
+    public Rigidbody2D rb;
+    private float maxSpeed = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +29,24 @@ public class Controller : MonoBehaviour
 
     void move()
 	{
-        float hori = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float vert = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float hori = Input.GetAxis("Horizontal");
+        float vert = Input.GetAxis("Vertical");
 
-        transform.position += new Vector3(hori, vert, 0);
+
+        rb.AddForce(new Vector2(hori, vert) * acceleration, ForceMode2D.Force);
+        if(maxSpeed < rb.velocity.magnitude)
+		{
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+		}
     }
 
     void shoot()
 	{
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(prefabCirculo, transform.position, transform.rotation);
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y, 1);
+            var shoot = Instantiate(prefabCirculo, pos, transform.rotation);
+            shoot.transform.parent = tirosPoll.transform;
         }
     }
 

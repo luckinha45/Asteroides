@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjetilMov : MonoBehaviour
+public class Projetil : MonoBehaviour
 {
     public float speed;
 
@@ -20,6 +20,12 @@ public class ProjetilMov : MonoBehaviour
 
     void OnBecameInvisible()
     {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
         Destroy(gameObject);
     }
 }
