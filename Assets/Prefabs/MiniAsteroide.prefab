@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3780090473260712931}
   m_Layer: 3
   m_Name: MiniAsteroide
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   rb: {fileID: 481409939654352563}
   miniAst: {fileID: 0}
   isMini: 1
-  explosionSFX: {fileID: 0}
 --- !u!50 &481409939654352563
 Rigidbody2D:
   serializedVersion: 4

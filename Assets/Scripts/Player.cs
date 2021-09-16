@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public GameObject prefabProjetil;
     public Rigidbody2D rb;
     public GameObject deathScreen;
+    public GameObject winScreen;
 
     private float acceleration = 5.0f;
     private float maxSpeed = 10.0f;
@@ -29,6 +30,12 @@ public class Player : MonoBehaviour
 	void Update()
     {
         shoot();
+        Debug.Log(GameObject.FindGameObjectsWithTag("Enemy").Length);
+
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            winScreen.SetActive(true);
+        }
     }
 
     void move()

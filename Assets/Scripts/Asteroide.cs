@@ -33,9 +33,8 @@ public class Asteroide : MonoBehaviour
 		{
             for(int i = 0; i < 3; i++)
 			{
-                var miniAstInst = Instantiate(miniAst, transform.position, Quaternion.identity);
-                //miniAst.transform.parent;
-			}
+                Instantiate(miniAst, transform.position, Quaternion.identity);
+            }
 		}
 
         Destroy(collision.gameObject);

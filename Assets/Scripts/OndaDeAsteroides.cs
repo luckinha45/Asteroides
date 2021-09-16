@@ -19,7 +19,14 @@ public class OndaDeAsteroides : MonoBehaviour
             float y = Random.Range(-5, 5);
 
             Vector3 pos = new Vector3(x, y, 0);
-            Instantiate(prefabAsteroide, pos, Quaternion.identity);
+            Asteroide ast = Instantiate(prefabAsteroide, pos, Quaternion.identity);
+
+            ast.transform.parent = transform;
 		}
     }
+
+    void Update()
+	{
+        
+	}
 }
