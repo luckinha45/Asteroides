@@ -5,7 +5,12 @@ using UnityEngine;
 public class Asteroide : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public GameObject miniAst;
+    public GameObject pollAsteroides;
+    public bool isMini;
+
     private float maxVel = 3.0f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +26,21 @@ public class Asteroide : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!isMini)
+		{
+            for(int i = 0; i < 3; i++)
+			{
+                var miniAstInst = Instantiate(miniAst, transform.position, Quaternion.identity);
+                //miniAst.transform.parent;
+			}
+		}
+
         Destroy(collision.gameObject);
+        Destroy(gameObject);
+    }
+
+    void OnBecameInvisible()
+    {
         Destroy(gameObject);
     }
 }

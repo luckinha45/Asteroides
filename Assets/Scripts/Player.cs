@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject prefabCirculo;
-    public GameObject tirosPoll;
-    private float acceleration = 5.0f;
-    public float angle = 0.0f;
+    public GameObject prefabProjetil;
     public Rigidbody2D rb;
+    public GameObject deathScreen;
+
+    private float acceleration = 5.0f;
     private float maxSpeed = 10.0f;
 
     // Start is called before the first frame update
@@ -17,14 +17,17 @@ public class Player : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+	private void FixedUpdate()
+	{
         lookAtMouse();
-
-        shoot();
-
+		
         move();
+	}
+
+	// Update is called once per frame
+	void Update()
+    {
+        shoot();
     }
 
     void move()
@@ -45,8 +48,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 pos = new Vector3(transform.position.x, transform.position.y, 1);
-            var shoot = Instantiate(prefabCirculo, pos, transform.rotation);
-            shoot.transform.parent = tirosPoll.transform;
+            var shoot = Instantiate(prefabProjetil, pos, transform.rotation);
         }
     }
 
@@ -60,4 +62,9 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.FromToRotation(transform.position, mousePos);
         transform.eulerAngles = new Vector3(0, 0, angle);
     }
+
+	private void OnDestroy()
+	{
+        deathScreen.SetActive(true);
+	}
 }
