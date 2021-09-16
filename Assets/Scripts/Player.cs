@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -65,6 +66,40 @@ public class Player : MonoBehaviour
 
 	private void OnDestroy()
 	{
+        Text nPontos = GameObject.Find("Canvas/nPontuacao").GetComponent<Text>();
+
+        int pts = System.Convert.ToInt32(nPontos.text);
+        pts -= 250;
+        nPontos.text = System.Convert.ToString(pts);
+
+        Debug.Log(nPontos.text);
+
         deathScreen.SetActive(true);
 	}
+
+    private void OnBecameInvisible()
+    {
+        float x = transform.position.x;
+        if (x > 13)
+        {
+            x = -14;
+        }
+        else if (x < -13)
+        {
+            x = 14;
+        }
+
+        float y = transform.position.y;
+        Debug.Log(y);
+        if (y > 5)
+        {
+            y = -6;
+        }
+        else if (y < -5)
+        {
+            y = 6;
+        }
+
+        transform.position = new Vector3(x, y, 0);
+    }
 }

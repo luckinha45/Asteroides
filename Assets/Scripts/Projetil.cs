@@ -6,10 +6,15 @@ public class Projetil : MonoBehaviour
 {
     public float speed;
 
+    private GameSounds gs;
+
     // Start is called before the first frame update
     void Start()
     {
         speed = 20.0f;
+        
+        gs = new GameSounds();
+        gs.playLaserBeam();
     }
 
     // Update is called once per frame

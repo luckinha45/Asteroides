@@ -136,3 +136,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2918157783230639261}
   miniAst: {fileID: 5280754083378752085, guid: bdb263abe3cb8884995e1df814095941, type: 3}
+  isMini: 0
+  explosionSFX: {fileID: 0}

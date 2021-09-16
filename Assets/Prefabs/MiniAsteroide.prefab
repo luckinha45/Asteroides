@@ -100,6 +100,7 @@ MonoBehaviour:
   rb: {fileID: 481409939654352563}
   miniAst: {fileID: 0}
   isMini: 1
+  explosionSFX: {fileID: 0}
 --- !u!50 &481409939654352563
 Rigidbody2D:
   serializedVersion: 4
